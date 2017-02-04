@@ -1,5 +1,9 @@
 Hovercraft Project
-------------------
+==================
 
 NOTE: Point b will be temporarily assigned as:
 44.639286, -63.614495 
+
+Functions of interest:
+azimuth(lat1,lon1,lat2,lon2)
+https://www.mathworks.com/help/map/ref/azimuth.html
