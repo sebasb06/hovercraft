@@ -1,0 +1,46 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf810
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 #include <Servo.h>\
+int pos = 0;    // variable to store the servo position\
+int servoPin= 9;\
+int servoDelay=60;\
+int servoDelay2=5;\
+Servo myPointer;\
+ \
+void setup()\
+\{\
+  Serial.begin(9600);\
+  myPointer.attach(servoPin);  // attaches the servo on pin 9 to the servo object\
+\}\
+void loop() \{\
+  \
+  for (pos=10; pos<=12; pos=pos+1) \{\
+\
+  myPointer.write(pos);\
+  delay(17000);\
+\
+\
+\}\
+ \
+for (pos=12; pos<=170; pos=pos+1) \{\
+\
+  myPointer.write(pos);\
+  delay(servoDelay);\
+\
+\}\
+\
+delay(30000);\
+\
+for (pos=170; pos>=10; pos=pos-1) \{\
+\
+  myPointer.write(pos);\
+  delay(servoDelay);\
+ \
+\}\
+\}\
+}
