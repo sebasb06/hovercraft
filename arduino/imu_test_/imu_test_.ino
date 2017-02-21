@@ -2,20 +2,20 @@
 char buffer[BUFF_SIZE];
 
 void setup(){
-Serial.begin(9600);
-Serial1.begin(9600);
+Serial.begin(115200);
+Serial3.begin(115200);
 }
 
 void loop() {
 
 int i = 0;
-while(Serial1.available()) {
-buffer[i++] = Serial1.read();
+while(Serial3.available()) {
+buffer[i++] = Serial3.read();
 if(i == BUFF_SIZE) break;
 }
 
 for(int j = 0; j < i; j++) {
-Serial.print(buffer[j]);
+Serial3.print(buffer[j]);
 }
 
 }
