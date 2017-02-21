@@ -3,8 +3,11 @@
  */
 void writeData (String source, String data)
 {
-  data = source + ": " + data;
+  
+  //data = source + ": " + data;
+  Serial.println ("@" + source);
   Serial.println (data);
+  Serial.println ("");
 
   if (1 || GPS.fix == 1)
   {

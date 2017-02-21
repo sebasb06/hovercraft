@@ -2,18 +2,29 @@
 #define gpsSerial Serial3
 #define imuSerial Serial1
 
+#define serialBaud 115200
+#define gpsBaud 9600
+#define imuBaud 57600
+
+unsigned long StartTime;
 void setup()
 {
   GPSsetup();
   IMUsetup();
+  RFsetup();
+  Servosetup();
+
+  StartTime = millis();
   
 }
  
 void loop() {
-  
+
+  writeData ("TIME_MS", String( millis() - StartTime));
   GPSloop();
   IMUloop();
-
+  RFloop();
+  Servoloop();
   
   
  /* 

@@ -21,8 +21,8 @@ File mySensorData; //Data object you will write your sesnor data to
  void GPSsetup ()
  {
   
-  Serial.begin(115200); //Turn on serial monitor
-  GPS.begin(9600); //Turn on GPS at 9600 baud
+  Serial.begin(serialBaud); //Turn on serial monitor
+  GPS.begin(gpsBaud); //Turn on GPS at 9600 baud
   GPS.sendCommand("$PGCMD,33,0*6D");  //Turn off antenna update nuisance data
   GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA); //Request RMC and GGA Sentences only
   GPS.sendCommand(PMTK_SET_NMEA_UPDATE_1HZ); //Set update rate to 1 hz
