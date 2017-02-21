@@ -1,13 +1,12 @@
 #include <SoftwareSerial.h>
-
 #include <SD.h> //Load SD card library
 #include<SPI.h> //Load SPI Library
  
 #include <Adafruit_GPS.h>    //Install the adafruit GPS library
 #include <SoftwareSerial.h> //Load the Software Serial library
-#define mySerial Serial3
-//SoftwareSerial mySerial(8,7); //Initialize the Software Serial port
-Adafruit_GPS GPS(&mySerial); //Create the GPS Object
+
+//SoftwareSerial gpsSerial(8,7); //Initialize the Software Serial port
+Adafruit_GPS GPS(&gpsSerial); //Create the GPS Object
 
 //
  
@@ -17,9 +16,10 @@ char c; //to read characters coming from the GPS
  
 int chipSelect = 53; //chipSelect pin for the SD card Reader
 File mySensorData; //Data object you will write your sesnor data to
- 
- 
-void setup() {
+
+
+ void GPSsetup ()
+ {
   
   Serial.begin(115200); //Turn on serial monitor
   GPS.begin(9600); //Turn on GPS at 9600 baud
@@ -37,37 +37,18 @@ void setup() {
   if (SD.exists("GPSData.txt")) { //Delete old data files to start fresh
     SD.remove("GPSData.txt");
   }
- 
-}
- 
-void loop() {
-  
-  readGPS();
- 
- /* 
-  if(GPS.fix==1) { //Only save data if we have a fix
-    mySensorData = SD.open("NMEA.txt", FILE_WRITE); //Open file on SD card for writing
-    mySensorData.println(NMEA1); //Write first NMEA to SD card
-    mySensorData.println(NMEA2); //Write Second NMEA to SD card
-    mySensorData.close();  //Close the file
-    mySensorData = SD.open("GPSData.txt", FILE_WRITE);
-    mySensorData.print(GPS.latitude,4); //Write measured latitude to file
-    mySensorData.print(GPS.lat); //Which hemisphere N or S
-    mySensorData.print(",");
-    mySensorData.print(GPS.longitude,4); //Write measured longitude to file
-    mySensorData.print(GPS.lon); //Which Hemisphere E or W
-    mySensorData.print(",");
-    mySensorData.println(GPS.altitude);
-    mySensorData.close();
-  }
-  */
+ }
 
-  // Print data to serial monitor
-  //if (GPS.fix == 1)
-  //{
- // }
-  
+
+void GPSloop()
+{
+    readGPS();
+    String gpsCoords = String(GPS.latitude,4) + GPS.lat + "," + String(GPS.longitude,4) + GPS.lon;
+    writeData ("GPS", gpsCoords);
+
 }
+
+
 void readGPS() {
   
   clearGPS();
@@ -83,8 +64,7 @@ void readGPS() {
   GPS.parse(GPS.lastNMEA()); //Parse that last good NMEA sentence1
   NMEA2=GPS.lastNMEA();
 
-
-  String gpsCoords = String(GPS.latitude,4) + GPS.lat + "," + String(GPS.longitude,4) + GPS.lon;
+  
 /*
     Serial.print(GPS.latitude,4);
     Serial.print(GPS.lat);
@@ -92,8 +72,6 @@ void readGPS() {
     Serial.print(GPS.longitude,4);
     Serial.println(GPS.lon);
 */
-
-  writeData (gpsCoords);
 
   //Serial.println(NMEA1);
   //Serial.println(NMEA2);
