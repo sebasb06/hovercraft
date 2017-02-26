@@ -1,14 +1,14 @@
 #define BUFF_SIZE 40
 char imu_buffer[BUFF_SIZE];
 
-void IMUsetup()
+void IMU_setup()
 {
    imuSerial.begin(imuBaud);
 }
 
 String imu_output; // holds output from imu chip
 
-void IMUloop()
+void IMU_sloop()
 {
     readFromIMU();
 }

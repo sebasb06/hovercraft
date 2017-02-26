@@ -18,7 +18,7 @@ int chipSelect = 53; //chipSelect pin for the SD card Reader
 File mySensorData; //Data object you will write your sesnor data to
 
 
- void GPSsetup ()
+ void GPS_setup ()
  {
   
   Serial.begin(serialBaud); //Turn on serial monitor
@@ -40,10 +40,10 @@ File mySensorData; //Data object you will write your sesnor data to
  }
 
 
-void GPSloop()
+void GPS_loop()
 {
     readGPS();
-    String gpsCoords = String(GPS.latitude,4) + GPS.lat + "," + String(GPS.longitude,4) + GPS.lon;
+    Strinsg gpsCoords = String(GPS.latitude,4) + GPS.lat + "," + String(GPS.longitude,4) + GPS.lon;
     writeData ("GPS", gpsCoords);
 
 }

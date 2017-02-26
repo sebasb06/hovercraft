@@ -1,11 +1,11 @@
-void RFsetup()
+void RF_setup()
 {
 
 
   
 }
 
-void RFloop()
+void RF_sloop()
 {
 
   
