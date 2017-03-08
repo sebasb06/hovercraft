@@ -1,4 +1,4 @@
-function resulting_points=Cal0culatePoints (a, b, distance_meters)
+function resulting_points=CalculatePoints (a, b, distance_meters)
 % CalculatePoints Calculates points along a path.
 
 bearing_ba = CalculateBearing (b,a);
