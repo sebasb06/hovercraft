@@ -1,6 +1,5 @@
 function resulting_points=CalculatePoints (a, b, distance_meters)
 % CalculatePoints Calculates points along a path.
-
 bearing_ba = CalculateBearing (b,a);
 resulting_points = [];
 c = a;
@@ -10,5 +9,4 @@ while CalculateRange (x,a) < CalculateRange (b,a)
     c = x;
     resulting_points = [resulting_points; x];    
 end
-
 end
