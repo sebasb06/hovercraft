@@ -4,17 +4,18 @@ function HovercraftMain()
 
 
 SetInitialConditions();
-
+GeneratePath();
+ 
 % Main loop
-while condition
+while condition    
+    if HovercraftOnPath()
+       PIController_Bearing();
+    else 
+       GeneratePath(); 
+    end 
     
-    GeneratePath();
-
-    Move
-    
-    
-    
-end %wihle
+    MoveOneStep();   
+end % while
 
 
 end 
