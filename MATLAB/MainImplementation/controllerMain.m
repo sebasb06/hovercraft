@@ -2,7 +2,6 @@ function HovercraftMain()
 % HovercraftMain main Hovercraft controller.
 % Implementation of system diagram.
 
-
 SetInitialConditions();
 GeneratePath();
  
@@ -12,7 +11,7 @@ while condition
        PIController_Bearing();
     else 
        GeneratePath(); 
-    end 
+    end
     
     MoveOneStep();   
 end % while
