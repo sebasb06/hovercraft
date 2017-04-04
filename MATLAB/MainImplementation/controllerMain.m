@@ -3,15 +3,15 @@ function HovercraftMain()
 % Implementation of system diagram.
 
 SetInitialConditions();
-GeneratePath();
+GeneratePath(GetInitialPoint());
  
 % Main loop
 while condition    
     if HovercraftOnPath()
        PIController_Bearing();
     else 
-       GeneratePath(); 
-    end
+       GeneratePath(GetCurrentPoint()); 
+    end % if
     
     MoveOneStep();   
 end % while
