@@ -40,9 +40,27 @@ function TestOutput()
             lon_sign = 1;
         end % if 
         
-        lat = str2num(lat(1:end-1)) * lat_sign / 100;
-        lon = str2num(lon(1:end-1)) * lon_sign / 100;
+        lat_degree = str2double(lat(1:2));
+        lat_minute = str2double(lat(3:4));
+        lat_second = str2double(lat(6:9)) / 100;
         
+        if lat_second >= 60
+            lat_minute = lat_minute + 1;
+            lat_second = lat_second - 60;
+        end %if
+        
+        lon_degree = str2double(lon(1:2));
+        lon_minute = str2double(lon(3:4));
+        lon_second = str2double(lon(6:end-1)) / 100;
+
+        
+        if lon_second >= 60
+            lon_minute = lon_minute + 1;
+            lon_second = lon_second - 60;
+        end %if
+        
+        lat = dms2degrees([lat_degree, lat_minute, lat_second]) * lat_sign;
+        lon = dms2degrees([lon_degree, lon_minute, lon_second]) * lon_sign;
                
         line = fgets(fid1);
         line = line(6:end-1);
@@ -50,11 +68,11 @@ function TestOutput()
         ypr = line;
         ypr = strsplit(ypr,',');
 
-      %  time_s = str2num(time) / 1000;
+        time_s = str2num(time) / 1000;
         
         
         all_coords = [all_coords; [lat, lon]];
-     %   all_times = [all_times, time_s];        
+        all_times = [all_times, time_s];        
     end    
     fclose(fid1);
 
