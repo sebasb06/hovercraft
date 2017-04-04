@@ -14,7 +14,8 @@ void ThrottleServo_setup()
 void ThrottleServo_TurnOn()
 {
   for (pos=30; pos<=67; pos=pos+1) 
-  { // zero point 
+  { 
+    // zero point 
     myPointer.write(pos);
     delay(20);
   }
