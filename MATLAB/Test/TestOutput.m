@@ -22,9 +22,7 @@ function TestOutput()
         
         coords = line;
         coords = strsplit(coords,',');
-       
-      
-        
+               
         lat = char(coords(1));
         lon = char(coords(2));
 
