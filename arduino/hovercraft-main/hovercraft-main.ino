@@ -2,7 +2,7 @@
 #define gpsSerial Serial3
 #define imuSerial Serial1
 
-#define sserialBaud 115200
+#define serialBaud 115200
 #define gpsBaud 9600
 #define imuBaud 57600
 
@@ -23,8 +23,9 @@ void loop() {
   writeData ("TIME_MS", String( millis() - StartTime));
   GPS_loop();
   IMU_loop();
-  RF_loop();
-  Servo_loop();
+  //RF_loop();
+  SteeringServo_loop();
+  ThrottleServo_loop();
   
   
  /* 

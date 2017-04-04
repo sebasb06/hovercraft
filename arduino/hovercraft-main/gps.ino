@@ -30,20 +30,20 @@ File mySensorData; //Data object you will write your sesnor data to
   
   pinMode(10, OUTPUT); //Must declare 10 an output and reserve it to keep SD card happy
   SD.begin(chipSelect); //Initialize the SD card reader
+
+  int counter = 1;
   
-  if (SD.exists("NMEA.txt")) { //Delete old data files to start fresh
-    SD.remove("NMEA.txt");
-  }
-  if (SD.exists("GPSData.txt")) { //Delete old data files to start fresh
-    SD.remove("GPSData.txt");
-  }
+  for (;SD.exists("NMEA" + String(counter) + ".txt"); counter++);
+  String file_name = "NMEA" + String(counter) + ".txt";
+  
+
  }
 
 
 void GPS_loop()
 {
     readGPS();
-    Strinsg gpsCoords = String(GPS.latitude,4) + GPS.lat + "," + String(GPS.longitude,4) + GPS.lon;
+    String gpsCoords = String(GPS.latitude,4) + GPS.lat + "," + String(GPS.longitude,4) + GPS.lon;
     writeData ("GPS", gpsCoords);
 
 }

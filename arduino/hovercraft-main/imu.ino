@@ -8,7 +8,7 @@ void IMU_setup()
 
 String imu_output; // holds output from imu chip
 
-void IMU_sloop()
+void IMU_loop()
 {
     readFromIMU();
 }

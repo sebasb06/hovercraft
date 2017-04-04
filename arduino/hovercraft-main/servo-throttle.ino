@@ -1,8 +1,8 @@
 #include <Servo.h>
-int pos = 0;    // variable to store the servo position
+//int pos = 0;    // variable to store the servo position
 int servoPin= 9;
-int servoDelay=20;
-Servo myPointer;
+//int servoDelay=20;
+//Servo myPointer;
  
 void ThrottleServo_setup()
 {
