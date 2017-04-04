@@ -50,15 +50,15 @@ function TestOutput()
         ypr = line;
         ypr = strsplit(ypr,',');
 
-        time_s = str2num(time) / 1000;
+      %  time_s = str2num(time) / 1000;
         
         
         all_coords = [all_coords; [lat, lon]];
-        all_times = [all_times, time_s];        
+     %   all_times = [all_times, time_s];        
     end    
     fclose(fid1);
 
-    
+ 
     all_speeds = [];
     all_bearings = [];
 
@@ -77,12 +77,12 @@ function TestOutput()
         all_bearings = [all_bearings; bearing];
         
     end % for
-    
+  
     figure;
     hold on;
     for i=1:size(all_coords) - 1
         plot ([all_coords(i,2),all_coords(i+1,2)], [all_coords(i,1),all_coords(i+1,1)])
     end % for
     
-    
+   
 end
