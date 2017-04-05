@@ -13,7 +13,8 @@ while condition
        GeneratePath(GetCurrentPoint()); 
     end % if
     
-    MoveOneStep();   
+    MoveOneStep(); 
+    
 end % while
 
 
