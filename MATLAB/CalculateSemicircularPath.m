@@ -1,0 +1,5 @@
+function CalculateSemicircularPath
+
+****
+
+end % CalculateSemicircularPath

@@ -3,6 +3,7 @@ function HovercraftMain()
 % Implementation of system diagram.
 
 SetInitialConditions();
+
 GeneratePath(GetInitialPoint());
  
 % Main loop
